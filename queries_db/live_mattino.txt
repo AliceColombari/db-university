@@ -1,0 +1,75 @@
+Selezionare tutti gli insegnanti
+SELECT * 
+FROM `teachers`;
+
+
+Seleziona solo il cognome di tutti gli insegnanti
+SELECT `surname` 
+FROM `teachers`;
+
+
+Selezionare tutti i referenti per ogni dipartimento
+SELECT `head_of_department`
+FROM `departments`;
+
+
+Selezionare tutti gli studenti il cui nome inizia per "E"
+SELECT * 
+FROM `students` 
+WHERE `name` LIKE 'E%';
+
+
+Selezionare tutti gli studenti che si sono iscritti nel 2021
+SELECT * 
+FROM `students` 
+WHERE `enrolment_date` LIKE '2021%';
+
+Oppure
+
+SELECT * 
+FROM `students` 
+WHERE YEAR(`enrolment_date`) = 2021;
+
+
+Oppure
+
+SELECT * 
+FROM `students` 
+WHERE `enrolment_date` 
+BETWEEN '2021-01-01' AND '2021-12-31';
+
+
+Selezionare tutti i corsi che non hanno un sito web
+SELECT * 
+FROM `courses` 
+WHERE `website` IS NULL;
+
+
+Selezionare tutti gli insegnanti che hanno un numero di telefono
+SELECT * 
+FROM `teachers`
+WHERE `phone` IS NOT NULL;
+
+
+Selezionare tutti gli appelli d'esame dei mesi di giugno e luglio 2020 
+SELECT * 
+FROM `exams`
+WHERE `date` BETWEEN '2020-06-01' AND '2020-07-31';
+
+
+Seleziona tutti gli esami del mese di Giugno o di Settembre
+SELECT * 
+FROM `exams`
+WHERE MONTH(`date`) = 6 OR MONTH(`date`) = 9;
+
+
+Selezione tutti gli esami di mesi di Giugno o Settembre, ordinandoli per data ed ora
+SELECT * 
+FROM `exams`
+WHERE MONTH(`date`) = 6 OR MONTH(`date`) = 9
+ORDER BY `date` ASC, `hour` ASC;
+
+
+Qual è il numero totale degli studenti iscritti?
+SELECT COUNT(*) AS numero_studenti 
+FROM `students`;
